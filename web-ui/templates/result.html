@@ -34,10 +34,11 @@
                 <th>Zipcode</th>
                 <th>Pickup Number</th>
             </tr>
-            {% for o in result_list %}
+            {% for row in result_list %}
             <tr>
-                <th>{{ o }}</th>
-                <th>{{ o }}</th>
+                {% for element in row %}
+                <th>{{ element }}</th>
+                {% endfor %}
             </tr>
             {% endfor %}
         {% endif %}

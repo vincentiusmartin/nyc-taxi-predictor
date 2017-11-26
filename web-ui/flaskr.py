@@ -15,17 +15,17 @@ def login():
         s1 = request.form['weekday'] + request.form['hour']+ request.form['temp']+ request.form['zipcode']
         s2 = s1 + 'ss'
         s3 = s1 + '??' 
-        s.append(s1)
-        s.append(s2)
-        s.append(s3)
+        s.append([s1,s2])
+        s.append([s2,s3])
+        s.append([s3,s1])
     else:
         if 'weekday' in request.form and 'hour' in request.form and 'temp' in request.form:
             s1 = request.form['weekday'] + request.form['hour']+ request.form['temp']
             s2 = s1 + 'ss'
             s3 = s1 + '??' 
-            s.append(s1)
-            s.append(s2)
-            s.append(s3)
+            s.append([s1,s2])
+            s.append([s2,s3])
+            s.append([s3,s1])
     img = ''
     if s != []:
         img = '/static/google.png'
