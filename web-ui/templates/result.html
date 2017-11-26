@@ -6,7 +6,6 @@
   <div class=metanav>
   {% block body %}{% endblock %}
 </div>
-
 <html>
     <h2 style="text-align:left">Basic Information</h2>
     <body style="text-align:center">
@@ -14,22 +13,21 @@
             <dl style="text-align:left">
             <dt>Weekday*:
             <input type="text" name="weekday"> <br/><br/>
-            <dt>Hour*:
+            <dt>Hour*   :
             <input type="text" name="hour"> <br/><br/>
-            <dt>Temp*:
+            <dt>Rain   :
+            <input type="text" name="rain"> <br/><br/>
+            <dt>Temp   :
             <input type="text" name="temp"> <br/><br/>
-            <dt>Zipcode:
-            <input type="text" name="zipcode"> <br/><br/>
+            <dt>Zipcode :
+            <input type="text" name="zipcode"> <br/>
+            <font size="1" color="red">Fields marked with * are required</font><br/>
             <input type="submit">
             </dl>
         </form>
-        {% if result != '' %}
+        {% if result_list %}
         <h2 style="text-align:left">Result</h2>
-        <h4 style="text-align:left">Estimated Price: {{ result }}</h4>
-        <h4 style="text-align:left">Pickup Location: {{ result2 }}</h4>
-        <h4 style="text-align:left">Average Time: {{ result3 }}</h4>
-        
-        <table align="center">
+        <table align="center" border=1>
             <tr >
                 <th>Zipcode</th>
                 <th>Pickup Number</th>
