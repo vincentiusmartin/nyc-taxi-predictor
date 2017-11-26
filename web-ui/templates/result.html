@@ -1,0 +1,32 @@
+<!doctype html>
+<title>Taxi Driver Guide</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>Taxi Driver Guide</h1>
+  <div class=metanav>
+  {% block body %}{% endblock %}
+</div>
+
+<html>
+    <h2 style="text-align:left">Basic Information</h2>
+    <body style="text-align:center">
+        <form action="/" method="post">
+            <dl style="text-align:left">
+                <dt>Time*       :
+            <input type="text" name="time"> <br/><br/>
+            <dt>Location*:
+            <input type="text" name="location"> <br/><br/>
+            <input type="submit">
+            </dl>
+        </form>
+        {% if result != '' %}
+        <h2 style="text-align:left">Result</h2>
+        <h4 style="text-align:left">Estimated Price: {{ result }}</h4>
+        <h4 style="text-align:left">Pickup Location: {{ result2 }}</h4>
+        <h4 style="text-align:left">Average Time: {{ result3 }}</h4>
+        {% endif %}
+        {% if image %}
+        <img src="{{ image }}"/>
+        {% endif %}
+    </body>
+</html>
