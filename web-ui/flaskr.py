@@ -5,6 +5,8 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 from pytz import timezone
 from prediction import prediction
 from prediction import prediction_nozip
+from plotter import get_plot
+import random
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -23,19 +25,21 @@ def login():
             ans_count = df[1]
             ans.append([ans_zip,ans_count])
             flag = True
+            get_plot(hour)
         else:
             if (request.form['weekday']!='') and (request.form['hour']!=''):
                 flag = True
                 weekday = int(request.form['weekday'])
                 hour = int(request.form['hour'])
-                df = prediction_nozip(weekday, hour) 
+                df = prediction_nozip(weekday, hour)
+                get_plot(hour) 
                 ans_zip = df['zipcode'].tolist()
                 ans_count = df['count'].tolist()
                 for i in range(0,len(ans_zip)):
                     ans.append([ans_zip[i].decode("utf-8").split('.')[0] ,ans_count[i]])
     img = ''
     if (flag) :
-        img = '/static/google.png'
+        img = 'static/thismap.html'+'?rand=' + str(round(random.random() * 10000000))
 
     return render_template("result.html", result = flag, result_list = ans, image=img)
 

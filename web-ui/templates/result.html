@@ -25,8 +25,14 @@
             <input type="submit">
             </dl>
         </form>
-        {% if result_list %}
-        <h2 style="text-align:left">Result</h2>
+
+        {% if result %}
+        <h2 style="text-align:center">Historical Pick-up Distribution Per Hour</h2>
+            <iframe src="{{ image }}" height="300" width="450"></iframe>
+        {% endif %}
+        
+        {% if result %}
+        <br/><br/><br/><h2 style="text-align:center">Prediction for Pick-up Number</h2>
         <table align="center" border=1>
             <tr >
                 <th>Zipcode</th>
@@ -40,8 +46,6 @@
             </tr>
             {% endfor %}
         {% endif %}
-        {% if image %}
-        <img src="{{ image }}"/>
-        {% endif %}
+
     </body>
 </html>
